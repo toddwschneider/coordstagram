@@ -38,7 +38,7 @@ class InstagramItemsController < ApplicationController
   end
 
   def index_cache_key
-    [@page, mobile_device?, filter_distance].join(':')
+    [@page, mobile_device?, filter_distance, InstagramItem.maximum(:id)].join(':')
   end
   helper_method :index_cache_key
 end

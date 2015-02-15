@@ -2,7 +2,7 @@
 content_for :meta_tags, meta_tags_for_index
 %>
 
-<% cache index_cache_key, expires_in: 30.seconds do %>
+<% cache index_cache_key, expires_in: 1.minute do %>
   <div class="page-header">
     <h1>
       <%= name_of_site %><br>
