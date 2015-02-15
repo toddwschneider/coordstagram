@@ -1,0 +1,33 @@
+<div class="modal" id="gram-modal" tabindex="-1" role="dialog" aria-labelledby="gram-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <% if mobile_device? %>
+        <div class="modal-header">
+          <span class="prev-item-mobile glyphicon glyphicon-chevron-left pull-left"></span>
+          <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
+          <span class="next-item-mobile glyphicon glyphicon-chevron-right pull-right"></span>
+        </div>
+      <% end %>
+
+      <span class="prev-item glyphicon glyphicon-chevron-left hidden-xs"></span>
+      <span class="next-item glyphicon glyphicon-chevron-right hidden-xs"></span>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="ig-media col-sm-12 col-md-8"></div>
+          <div class="ig-info col-sm-12 col-md-4">
+            <div class="ig-avatar"></div>
+            <div class="ig-data">
+              <div class="ig-user"></div>
+              <div class="ig-meta"></div>
+              <div class="ig-caption"></div>
+              <hr>
+              <div id="ig-map"></div>
+              <div class="ig-filter"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<%
+content_for :meta_tags, meta_tags_for_index
+%>
+
+<% cache index_cache_key, expires_in: 30.seconds do %>
+  <div class="page-header">
+    <h1>
+      <%= name_of_site %><br>
+      <small><%= page_header_subtitle %></small>
+    </h1>
+  </div>
+
+  <div class="instagram-items">
+    <%= render partial: '/instagram_items/thumbnail', collection: @items, as: :item %>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="pagination">
+    <% if @items.size > 0 %>
+      <%= link_to 'more', root_path(page: @page + 1, d: params[:d]),
+                  rel: 'next', class: 'next-page' %>
+      <%= image_tag 'loading.gif', class: 'loading-more' %>
+    <% end %>
+  </div>
+
+  <%= render '/instagram_items/modal' %>
+  <%= render '/instagram_items/map_modal' %>
+<% end %>

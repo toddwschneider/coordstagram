@@ -1,0 +1,4 @@
+<div class="modal-item-content" data-created-time="<%= item.created_time.iso8601 %>" data-username="<%= item.username %>" data-profile="<%= item.full_data.user.profile_picture %>" data-full-name="<%= item.full_data.user.full_name %>" data-ig-type="<%= item.instagram_type %>" data-lat="<%= item.latitude %>" data-long="<%= item.longitude %>" data-filter="<%= item.filter %>" data-full-res-img="<%= item.full_data.images.standard_resolution.url %>" data-full-res-vid="<%= item.full_data.videos.try(:standard_resolution).try(:url) %>" data-path="<%= item.path %>" data-link="<%= item.link %>">
+  <div class="ig-location"><%= item.full_data.location.try(:name) %></div>
+  <div class="ig-caption"><%= formatted_and_linked_caption(item) %></div>
+</div>

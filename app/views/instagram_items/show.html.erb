@@ -1,0 +1,18 @@
+<%
+content_for :title, title_for(@item)
+content_for :meta_tags, meta_tags_for(@item)
+%>
+
+<div class="page-header">
+  <h1>
+    <%= link_to name_of_site, root_url %><br>
+    <small><%= page_header_subtitle %></small>
+  </h1>
+</div>
+
+<div class="standalone-item">
+  <%= render '/instagram_items/modal_item_content', item: @item %>
+  <%= render '/instagram_items/modal' %>
+</div>
+
+<%= render '/instagram_items/map_modal' %>

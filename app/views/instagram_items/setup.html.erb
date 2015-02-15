@@ -1,0 +1,59 @@
+<% missing_config_vars = InstagramItem::MISSING_CONFIG_VARS %>
+
+<div class="page-header">
+  <h1><%= link_to name_of_site, root_url %></h1>
+</div>
+
+<div class="col-md-7" style="margin-bottom: 100px">
+  <% if missing_config_vars.present? %>
+    <h2>You're almost done, but you need to set the following config variables:</h2>
+  <% end %>
+
+  <% if %w(LATITUDE LONGITUDE).any? { |k| missing_config_vars.include?(k) } %>
+    <h3><code>LATITUDE</code> and <code>LONGITUDE</code></h3>
+    <p>
+      The app will fetch Instagrams within a circle centered at these coordinates. You can convert an address into latitude and longitude coordinates at <%= link_to 'latlong.net', 'http://www.latlong.net/convert-address-to-lat-long.html', target: '_blank' %>, or you can also use <%= link_to 'Google Maps', 'https://www.google.com/maps', target: '_blank' %>. If you use Google Maps, you'll need to copy/paste the coordinates from the URL bar:
+    </p>
+    <p>
+      <%= image_tag 'eiffel.png', style: 'max-width: 100%;' %>
+    </p>
+  <% end %>
+
+  <% if missing_config_vars.include?('MAX_DISTANCE_IN_METERS') %>
+    <h3><code>MAX_DISTANCE_IN_METERS</code></h3>
+    <p>
+      The config variable <code>MAX_DISTANCE_IN_METERS</code> controls the search radius when looking for Instagram photos and videos. Instagram lets you search a radius of up to 5,000 meters, but for many coordinates, especially in crowded cities, you'll get better results if you choose a much lower value, maybe in the neighborhood of 50 to 100 meters (depending on how specific you want to get!)
+    </p>
+  <% end %>
+
+  <% if missing_config_vars.include?('INSTAGRAM_CLIENT_ID') %>
+    <h3><code>INSTAGRAM_CLIENT_ID</code></h3>
+    <p>
+      You'll need to register your app with Instagram:
+      <ul>
+        <li>Head over to <%= link_to "Instagram's developer website", 'http://instagram.com/developer/', target: '_blank' %> and sign in with your normal Instagram credentials</li>
+        <li>Click the <b>Register Your Application</b> button</li>
+        <li>Click the <b>Register a New Client</b> button</li>
+        <li>Fill out the form. Leave the checkboxes in their default states. Note that you won't be using OAuth, so you can put pretty much anything in the OAuth redirect_uri field, but <code>http://[YOURDOMAIN]/auth/instagram/callback</code> should do nicely</li>
+        <li>The <b>Client ID</b> is all you need, you can ignore the Client Secret</li>
+      </ul>
+    </p>
+  <% end %>
+
+  <h2>How to set config vars</h2>
+  <p>Once you've collected the required config variables, you need to set them in your app</p>
+  <p><b>In development:</b></p>
+  <ol>
+    <li>From the project's root directory, create a file called <code>.env</code> and open it in your text editor</li>
+    <li>Edit it to look something like this, updated with your own values: <%= image_tag 'dotenv.png' %></li>
+    <li>Restart your server and you should be good to go</li>
+  </ol>
+  <p><b>In production on Heroku:</b></p>
+  <ol>
+    <li>Use the <code>heroku config:set</code> command from your terminal, something like: <code>heroku config:set LATITUDE=48.85837 LONGITUDE=2.294481 MAX_DISTANCE_IN_METERS=100 INSTAGRAM_CLIENT_ID=yourclientid NAME_OF_SITE="whatever you want to call it"</code></li>
+  </ol>
+
+  <h2>Rake tasks</h2>
+  <p>Once your database is created and you've run migrations, you can grab Instagram photos and videos by running <code>rake initial_backill</code>, or on Heroku that's <code>heroku run rake initial_backfill</code>. If you want to fetch new photos, you can use <code>(heroku run) rake get_new_items</code></p>
+  <p>You might want to use the Heroku scheduler to get new items periodically. Run <code>heroku addons:open scheduler</code>, then create a new <code>rake get_new_items</code> task to run every day, hour, or 10 minutes. Note that you might incur a Heroku dyno charge, depending on how often you run the rake task and how many Instagrams there are to fetch!</p>
+</div>

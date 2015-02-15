@@ -1,0 +1,15 @@
+<div class="modal<%= ' mobile' if mobile_device? %>" id="map-modal" tabindex="-1" role="dialog" aria-labelledby="map-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <% if mobile_device? %>
+        <div class="modal-header">
+          <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
+        </div>
+      <% end %>
+
+      <div class="modal-body">
+        <div id="overview-map"></div>
+      </div>
+    </div>
+  </div>
+</div>

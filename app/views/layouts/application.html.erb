@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title).presence || name_of_site %></title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <%= yield(:meta_tags) %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= favicon_link_tag 'favicon-32x32.png', sizes: '32x32', type: 'image/png' %>
+  <%= favicon_link_tag 'favicon-16x16.png', sizes: '32x32', type: 'image/png' %>
+  <%= favicon_link_tag 'apple-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
+  <%= javascript_tag do %>
+    var LATITUDE = <%= InstagramItem::LATITUDE %>
+    var LONGITUDE = <%= InstagramItem::LONGITUDE %>
+    var MAX_DISTANCE_IN_METERS = <%= InstagramItem::MAX_DISTANCE_IN_METERS %>
+  <% end %>
+  <%= google_analytics %>
+</head>
+<body>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+<div class="instagram-item" data-toggle="modal" data-target="#gram-modal">
+  <% if item.video? %>
+    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+  <% end %>
+
+  <a href="<%= item.link %>" class="ig-link" target="_blank">
+    <img src="<%= item.full_data.images.thumbnail.url %>" onerror="handleBrokenImage(this)">
+  </a>
+
+  <%= render '/instagram_items/modal_item_content', item: item %>
+</div>
