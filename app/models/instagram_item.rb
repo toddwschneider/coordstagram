@@ -56,7 +56,7 @@ class InstagramItem < ActiveRecord::Base
       stop_time = opts[:stop_at_timestamp].to_i
 
       number_of_pages.times do
-        return if stop_time > 0 && max_timestamp.to_i > stop_time
+        return if stop_time > 0 && stop_time > max_timestamp.to_i
 
         puts [max_timestamp, Time.zone.at(max_timestamp)].join("\t")
 
