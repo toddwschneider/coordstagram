@@ -86,7 +86,7 @@ module ApplicationHelper
     auto_link(text.to_s, hashtag_url_base: 'http://websta.me/tag/',
                          username_url_base: 'http://instagram.com/',
                          url_class: nil,
-                         hashtag_class: nil,
+                         hashtag_class: '',
                          username_class: nil,
                          username_include_symbol: true,
                          target_blank: true)
