@@ -7,7 +7,7 @@ task :get_new_items => :environment do
   end
 
   max_timestamp = Time.zone.now
-  max_number_of_pages = ENV.fetch('MAX_PAGES_TO_FETCH_PER_UPDATE', 10).to_i
+  max_number_of_pages = (ENV['MAX_PAGES_TO_FETCH_PER_UPDATE'].presence || 10).to_i
   stop_at_timestamp = InstagramItem.maximum(:created_time)
 
   puts "fetching up to #{max_number_of_pages} page(s) from Instagram, starting at #{max_timestamp} and working backward, stopping at #{stop_at_timestamp}"

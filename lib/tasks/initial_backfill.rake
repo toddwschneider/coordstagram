@@ -7,7 +7,7 @@ task :initial_backfill => :environment do
   end
 
   max_timestamp = Time.zone.now
-  number_of_pages = ENV.fetch('PAGES_TO_FETCH_FOR_INITIAL_BACKFILL', 20).to_i
+  number_of_pages = (ENV['PAGES_TO_FETCH_FOR_INITIAL_BACKFILL'].presence || 20).to_i
 
   puts "fetching #{number_of_pages} page(s) from Instagram, starting at #{max_timestamp} and working backward"
 

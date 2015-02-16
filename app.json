@@ -1,0 +1,49 @@
+{
+  "name": "Coordstagram",
+  "description": "View Instagram photos and videos that were taken near a specified latitude and longitude",
+  "keywords": [
+    "Instagram",
+    "maps",
+    "leaflet"
+  ],
+  "website": "https://github.com/toddwschneider/coordstagram",
+  "repository": "https://github.com/toddwschneider/coordstagram",
+  "logo": "https://raw.githubusercontent.com/toddwschneider/coordstagram/master/public/images/apple-icon.png",
+  "success_url": "/",
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate && bundle exec rake initial_backfill"
+  },
+  "addons": [
+    "scheduler:standard",
+    "memcachier:dev",
+    "newrelic:stark",
+    "heroku-postgresql:hobby-dev"
+  ],
+  "env": {
+    "LATITUDE": {
+      "description": "Latitude of coordinates you want to fetch Instagrams from. Find coordinates at Google Maps or latlong.net",
+      "value": ""
+    },
+    "LONGITUDE": {
+      "description": "Longitude of coordinates you want to fetch Instagrams from",
+      "value": ""
+    },
+    "MAX_DISTANCE_IN_METERS": {
+      "description": "Search radius from coordinates, in meters. Must be between 1 and 5000",
+      "value": ""
+    },
+    "INSTAGRAM_CLIENT_ID": {
+      "description": "Register your application at http://instagram.com/developer and get a Client ID",
+      "value": ""
+    },
+    "NAME_OF_SITE": {
+      "description": "What do you want to call your site?",
+      "value": "",
+      "required": false
+    },
+    "PAGES_TO_FETCH_FOR_INITIAL_BACKFILL": {
+      "description": "How many pages of Instagram items to fetch after deploy? There are 20 photos/videos per page of Instagram items",
+      "value": "20"
+    }
+  }
+}

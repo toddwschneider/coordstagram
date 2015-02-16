@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def name_of_site
-    ENV.fetch('NAME_OF_SITE', 'Coordstagram')
+    ENV['NAME_OF_SITE'].presence || 'Coordstagram'
   end
 
   def page_header_subtitle
