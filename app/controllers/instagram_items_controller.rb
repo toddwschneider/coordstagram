@@ -19,8 +19,6 @@ class InstagramItemsController < ApplicationController
       redirect_to root_url
       return
     end
-
-    # TODO: check all the _path and _url to make sure they work in prod, and with custom domains
   end
 
   private
