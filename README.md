@@ -6,6 +6,8 @@ For example, [here's a demo coordstagram app](http://gowanus.herokuapp.com/) tha
 
 If configured properly, you can host your own coordstagram app on Heroku at little to no monthly cost
 
+<a href="https://heroku.com/deploy?template=https://github.com/toddwschneider/coordstagram"><img src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.svg" style="max-width:100%;"></a>
+
 ### Getting started
 
 There are 4 config variables you have to set to make the app work:
@@ -31,6 +33,12 @@ You'll need to register you app with Instagram in order to get an `INSTAGRAM_CLI
 
 ### Deploy on Heroku (for free!**)
 
+Click the button below to get started:
+
+<a href="https://heroku.com/deploy?template=https://github.com/toddwschneider/coordstagram"><img src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.svg" style="max-width:100%;"></a>
+
+Or if you'd rather deploy manually (replace the config vars below with your own values!):
+
 ```
 git clone git@github.com:toddwschneider/coordstagram.git
 cd coordstagram
@@ -40,16 +48,11 @@ heroku addons:add newrelic:stark
 heroku addons:add scheduler:standard
 git push heroku master
 heroku run rake db:migrate
-```
-
-Once that finishes, you'll have to set config vars with `heroku config:set`, then fetch some photos and videos with a rake task (replace values below with your own values!):
-
-```
 heroku config:set LATITUDE=48.85837 LONGITUDE=2.294481 MAX_DISTANCE_IN_METERS=100 INSTAGRAM_CLIENT_ID="your instagram client id"
 heroku run rake initial_backfill
 ```
 
-You might want to use the Heroku scheduler to get new items periodically. Run `heroku addons:open scheduler`, then create a new `rake get_new_items` task to run every day, hour, or 10 minutes: ![](http://i.imgur.com/fV0G14t.png)
+**After you've deployed, either via the button or manually,** you might want to use the Heroku scheduler to get new items periodically. Run `heroku addons:open scheduler`, then create a new `rake get_new_items` task to run every day, hour, or 10 minutes: ![](http://i.imgur.com/fV0G14t.png)
 
 ** **free-ness not guaranteed!** Heroku's current pricing gives you 750 free dyno hours per month. You'll have 1 web dyno running at all times, so in a month with 31 days that leaves 750 - (31 * 24) = 6 hours = 360 minutes of free time to run the `rake get_new_items` task using Heroku's scheduler. If you run the rake task every hour, then it will run a total of 31 * 24 = 746 times in a month. As long as the rake task averages less than 29 seconds to finish, you won't receive any overage charges.
 
