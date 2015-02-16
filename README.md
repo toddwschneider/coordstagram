@@ -2,7 +2,7 @@
 
 Coordstagram is a simple Ruby on Rails application that uses the Instagram API to fetch, store, and view photos and videos that were taken near a user-specified latitude and longitude
 
-For example, [here's a demo coordstagram app](http://gowanus.herokuapp.com/) that collects and displays all public Instagrams taken within 600 meters of the Gowanus Canal in Brooklyn
+For example, [here's a demo coordstagram app](http://gowanus.herokuapp.com/) that collects and displays all public Instagrams taken within 600 meters of the Gowanus Canal in Brooklyn. There are more [user-contributed examples](https://github.com/toddwschneider/coordstagram/wiki/examples) in the wiki (please add your own!)
 
 If configured properly, you can host your own coordstagram app on Heroku at little to no monthly cost
 
