@@ -44,7 +44,7 @@ git clone git@github.com:toddwschneider/coordstagram.git
 cd coordstagram
 heroku apps:create your-app-name-here
 heroku addons:add memcachier:dev
-heroku addons:add newrelic:stark
+heroku addons:add newrelic:wayne
 heroku addons:add scheduler:standard
 git push heroku master
 heroku run rake db:migrate

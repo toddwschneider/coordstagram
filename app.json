@@ -16,7 +16,7 @@
   "addons": [
     "scheduler:standard",
     "memcachier:dev",
-    "newrelic:stark",
+    "newrelic:wayne",
     "heroku-postgresql:hobby-dev"
   ],
   "env": {
