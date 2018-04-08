@@ -1,3 +1,7 @@
+# 😔
+
+Unfortunately Instagram has [deprecated its platform API](https://www.instagram.com/developer/), which means that the code in this repo no longer works
+
 # Coordstagram
 
 Coordstagram is a simple Ruby on Rails application that uses the Instagram API to fetch, store, and view photos and videos that were taken near a user-specified latitude and longitude
